@@ -7,8 +7,12 @@ from settings import GOOGLE_API_KEY, GEMINI_MODEL
 # Configure Gemini API
 genai.configure(api_key=GOOGLE_API_KEY)
 
-# Create a client function
-def get_gemini_response(prompt: str) -> str:
-    model = genai.GenerativeModel(GEMINI_MODEL)
-    response = model.generate_content(prompt)
+# Create a model instance once
+model = genai.GenerativeModel(GEMINI_MODEL)
+
+def get_gemini_response(messages: list) -> str:
+    """
+    messages: list of dicts with role ('user', 'assistant', 'system') and content
+    """
+    response = model.generate_content(messages)
     return response.text if response else "⚠️ Não recebi resposta do modelo."
