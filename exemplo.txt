@@ -1,0 +1,3 @@
+Este é um arquivo de exemplo.
+Contém informações importantes para testar a ferramenta de leitura.
+O agente pode ler este arquivo usando a ferramenta read_file.
