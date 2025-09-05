@@ -4,7 +4,7 @@ from chat_session import ChatSession
 from tool_executor import execute_tool
 
 def run_agent():
-    print("🤖 Olá! Eu sou seu agente de IA com ferramentas externas. Digite 'sair' para encerrar.\n")
+    print("🤖 Olá! Eu sou seu agente de IA com ferramentas inteligentes. Digite 'sair' para encerrar.\n")
 
     session = ChatSession(SYSTEM_PROMPT)
 
@@ -20,11 +20,10 @@ def run_agent():
             response = get_gemini_response(session.get_history())
 
             if response.startswith("TOOL:"):
-                # Execute tool using the tool executor
+                print("🔧 O agente decidiu usar uma ferramenta...")
                 tool_result = execute_tool(response)
-                print(f"🔧 Executando ferramenta...\n{tool_result}")
+                print(f"Resultado da ferramenta:\n{tool_result}")
                 session.add_agent_message(tool_result)
-
             else:
                 print("Agente:", response)
                 session.add_agent_message(response)
