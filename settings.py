@@ -10,6 +10,8 @@ if not GOOGLE_API_KEY:
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-pro")
 
 SYSTEM_PROMPT = (
-    "You are an AI agent that helps users by reasoning clearly, "
-    "calling tools when needed, and giving structured answers."
+    "You are an AI agent that helps users by reasoning clearly. "
+    "You can call tools when needed. "
+    "Available tools: search_web(query), read_file(path), run_command(command). "
+    "Always respond in Portuguese when talking to the user."
 )
